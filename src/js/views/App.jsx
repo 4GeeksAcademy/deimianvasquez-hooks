@@ -9,6 +9,7 @@ const App = (props) => {
     const [color, setColor] = useState("text-danger")
 
     const [arrColor, setArrColor] = useState(["text-secondary", "text-danger", "text-warning"])
+    const [off, setOff] = useState(false)
 
     function decrement() {
         setCounter(counter - 1)
@@ -25,19 +26,24 @@ const App = (props) => {
 
 
     return (
-        <div className="container">
-            <div className={`row justify-content-center ${color}`}>
-                <div className={counter < 0 ? `col-7 py-5 my-5 bg-danger` : "col-7 py-5 my-5 bg-success"}>
-                    {counter}
-                </div>
-                <div className="col-7 d-flex gap-4">
+        <>
 
-                    <button onClick={() => setCounter(counter + 1)}>Sumar</button>
-                    <button onClick={() => decrement()}>Restar</button>
-                    <button onClick={() => changeColor()}>Cambia color texto</button>
+            <div className="container ">
+                <div onClick={() => { setOff(!off) }} className={`semaforo ${off ? "on" : ""}`}></div>
+                <div className={`row justify-content-center ${color}`}>
+                    <div className={counter < 0 ? `col-7 py-5 my-5 bg-danger` : "col-7 py-5 my-5 bg-success"}>
+                        {counter}
+                    </div>
+                    <div className="col-7 d-flex gap-4">
+
+                        <button onClick={() => setCounter(counter + 1)}>Sumar</button>
+                        <button onClick={() => decrement()}>Restar</button>
+                        <button onClick={() => changeColor()}>Cambia color texto</button>
+                    </div>
                 </div>
             </div>
-        </div>
+
+        </>
     )
 }
 
